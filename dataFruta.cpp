@@ -102,6 +102,7 @@ class ListaNomes : public Lista {
            lista.push_back(elemento);
         }
         cout << "Todos os elementos foram inseridos." << endl;
+		listarEmOrdem();
 	}
 
 	void listarEmOrdem() override {
@@ -219,6 +220,8 @@ class ListaDatas : public Lista  {
 			Data novaData(dia, mes, ano);
 			lista.push_back(novaData);
 		}
+		cout << "Todos os elementos foram inseridos." << endl;
+		listarEmOrdem();
 	}
 
 	void listarEmOrdem() override {
@@ -321,6 +324,7 @@ class ListaSalarios : public Lista {
            lista.push_back(elemento);
         }
         cout << "Todos os elementos foram inseridos." << endl;
+		listarEmOrdem();
 	}
 
 	void listarEmOrdem() override {
@@ -353,10 +357,10 @@ class ListaSalarios : public Lista {
 
 			if(size % 2 != 0) {
 				float mediana = lista.at(size/2);
-				cout << "A mediana da lista de salarios informada: " << fixed << setprecision(1) << mediana << endl;
+				cout << "A mediana da lista de salarios informada: R$ " << fixed << setprecision(2) << mediana << endl;
 			} else {
 				float mediana = ((lista.at(size/2 - 1) + lista.at(size/2)) / 2.0);
-				cout << "A mediana da lista de salarios informada: " << fixed << setprecision(1) <<  mediana << endl;
+				cout << "A mediana da lista de salarios informada: R$ " << fixed << setprecision(2) <<  mediana << endl;
 			}
 		} else {
 			cout << "A lista esta vazia. Adicione pelo menos um elemento." << endl;
@@ -372,7 +376,7 @@ class ListaSalarios : public Lista {
 					menor = lista[i];
 				}
 			}
-			cout << "O menor salario da lista: " << fixed << setprecision(1) << menor << endl;
+			cout << "O menor salario da lista: R$ " << fixed << setprecision(2) << menor << endl;
 		} else {
 			cout << "A lista esta vazia. Adicione pelo menos um elemento." << endl;
 		}
@@ -386,7 +390,7 @@ class ListaSalarios : public Lista {
 					maior = lista[i];
 				}
 			}
-			cout << "O maior salario da lista: " << fixed << setprecision(1) << maior << endl;
+			cout << "O maior salario da lista: R$ " << fixed << setprecision(2) << maior << endl;
 		} else {
 			cout << "A lista esta vazia. Adicione pelo menos um elemento." << endl;
 		}
@@ -399,7 +403,7 @@ class ListaSalarios : public Lista {
 			if(size >= n){
 				cout << "Imprimindo lista de salarios: " << endl;
 				for(int i = 0; i < n; i++){
-					cout << "R$ " << fixed << setprecision(1) << lista[i] << endl;
+					cout << "R$ " << fixed << setprecision(2) << lista[i] << endl;
 				}
 			} else {
 				cout << "A lista de salarios possui menos do que " << n << " elementos."<< endl;
@@ -431,6 +435,7 @@ class ListaIdades : public Lista  {
            lista.push_back(elemento);
         }
         cout << "Todos os elementos foram inseridos." << endl;
+		listarEmOrdem();
 	}
 
 	void listarEmOrdem() override {
@@ -461,10 +466,10 @@ class ListaIdades : public Lista  {
 			size_t size = lista.size();
 
 			if(size % 2 != 0) {
-				float mediana = lista.at(size/2);
+				int mediana = lista.at(size/2);
 				cout << "A mediana da lista de idades informada: " << mediana << endl;
 			} else {
-				float mediana = ((lista.at(size/2 - 1) + lista.at(size/2)) / 2);
+				int mediana = ((lista.at(size/2 - 1) + lista.at(size/2)) / 2);
 				cout << "A mediana da lista de idades informada: " << mediana << endl;
 			}
 		} else {
@@ -475,7 +480,7 @@ class ListaIdades : public Lista  {
 	void mostraMenor() override {
 		int isEmpty = Utils<int>::isEmpty(&lista);
 		if(!isEmpty){
-			float menor = lista[0];
+			int menor = lista[0];
 			for(int i = 0; i < lista.size(); i++){
 				if(lista[i] < menor) {
 					menor = lista[i];
@@ -489,7 +494,7 @@ class ListaIdades : public Lista  {
 	void mostraMaior() override {
 		int isEmpty = Utils<int>::isEmpty(&lista);
 		if(!isEmpty){
-			float maior = lista[0];
+			int maior = lista[0];
 			for(int i = 0; i < lista.size(); i++){
 				if(lista[i] > maior) {
 					maior = lista[i];
@@ -537,6 +542,7 @@ int main () {
 	ListaIdades listaIdades;
 	listaIdades.entradaDeDados();
 	listaDeListas.push_back(&listaIdades);
+	cout << endl;
 
 	for (Lista* l : listaDeListas) {
 		l->mostraMediana();
